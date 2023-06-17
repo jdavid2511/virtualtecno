@@ -8,7 +8,7 @@ class detalle_entrada_MO
     $this->conexion = $conexion;
   }
 
-  function agregardetalle_entrada($id_de,$cantidad, $precio)
+  function agregardetalle_entrada($id_de,$id_producto,$cantidad, $precio)
   {
 
     $mql=array('detail_entries' => array('code_detail_entry'=>$id_de,'amount'=>$cantidad,'precio'=>$precio));

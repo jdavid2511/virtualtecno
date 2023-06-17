@@ -21,7 +21,7 @@ class detalle_entrada_CO
     $precio = htmlentities($_POST['precio'], ENT_QUOTES);
     $id_producto = htmlentities($_POST['id_producto'], ENT_QUOTES);
 
-    if (empty($id_de) or empty($cantidad) or empty($precio)) {
+    if (empty($id_de) or empty($id_de) or empty($cantidad) or empty($precio)) {
       $arreglo_respuesta = [
         "estado" => "ERROR",
         "mensaje" => "Todos los campos son obligatorios"
@@ -31,7 +31,7 @@ class detalle_entrada_CO
       exit(json_encode($arreglo_respuesta));
     }
     
-    $detalle_entrada_MO->agregardetalle_entrada($id_de,$cantidad, $precio);
+    $detalle_entrada_MO->agregardetalle_entrada($id_de,$id_producto,$cantidad, $precio);
     /*$familia= $conexion->lastInsertId();*/
     $arreglo_respuesta = [
       "estado" => "EXITO",

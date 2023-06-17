@@ -154,8 +154,8 @@ class producto_VI
                         <td style="text-align: center;">
                             <input type="hidden" id="id_producto_<?php echo $id_producto; ?>"
                                 value="<?php echo $id_producto; ?>">
-                            <input type="hidden" id="marca_<?php echo $id_producto; ?>" value="<?php echo $marca; ?>">
-                            <input type="hidden" id="categoria_<?php echo $id_producto; ?>"
+                            <input type="hidden" id="marca<?php echo $id_producto; ?>" value="<?php echo $marca; ?>">
+                            <input type="hidden" id="categoria<?php echo $id_producto; ?>"
                                 value="<?php echo $categoria; ?>">
                             <input type="hidden" id="nombre_producto_<?php echo $id_producto; ?>"
                                 value="<?php echo $nombre_producto; ?>">
@@ -220,8 +220,8 @@ function agregarproducto() {
 
                                         <td style="text-align: center;">
                                             <input type="hidden" id="id_producto_${id_producto}" value="${codigo}">
-                                            <input type="hidden" id="marca_${id_producto}" value="${marca}">
-                                            <input type="hidden" id="categoria_${id_producto}" value="${categoria}">
+                                            <input type="hidden" id="marca${id_producto}" value="${marca}">
+                                            <input type="hidden" id="categoria${id_producto}" value="${categoria}">
                                             <input type="hidden" id="nombre_producto_${id_producto}" value="${nombre_producto}">
                                             <input type="hidden" id="stock_${id_producto}" value="${stock}">
                                             <input type="hidden" id="precio_unitario_${id_producto}" value="${precio_unitario}">
@@ -248,8 +248,8 @@ function agregarproducto() {
 
 function verActualizarproducto(id_producto) {
     //let especie1 = document.querySelector('#especie_' + id_$id_producto).value;
-    let marca = document.querySelector('#marca_' + id_producto).value;
-    let categoria = document.querySelector('#categoria_' + id_producto).value;
+    let marca = document.querySelector('#marca' + id_producto).value;
+    let categoria = document.querySelector('#categoria' + id_producto).value;
     let nombre_producto = document.querySelector('#nombre_producto_' + id_producto).value;
     let stock = document.querySelector('#stock_' + id_producto).value;
     let precio_unitario = document.querySelector('#precio_unitario_' + id_producto).value;
@@ -262,8 +262,8 @@ function verActualizarproducto(id_producto) {
                              <form id="formulario_actualizar_productos">
  
                         <div class="form-group">
-                            <label for="marca_">Nombre marca</label>
-                            <select class="form-control" name="marca_" id="marca_">
+                            <label for="marca">Nombre marca</label>
+                            <select class="form-control" name="marca" id="marca">
                                 <option value="${marca}">${marca}</option>
                                 <option value="SAMSUNG">SAMSUNG</option>
                                 <option value="OPPO">OPPO</option>
@@ -280,7 +280,7 @@ function verActualizarproducto(id_producto) {
                         </div>
                         <div class="form-group">
                             <label for="categoria">categoria</label>
-                            <select class="form-control" name="categoria_" id="categoria_">
+                            <select class="form-control" name="categoria" id="categoria">
                                 <option value="${categoria}">${categoria}</option>
                                 <option value="MAS VENDIDOS">MAS VENDIDOS</option>
                                 <option value="ASARTPHONE">SMARTPHONE</option>
@@ -346,8 +346,7 @@ function actualizarproducto() {
                 let categoria = document.querySelector('#formulario_actualizar_productos #categoria')
                     .value;
                 let stock = document.querySelector('#formulario_actualizar_productos #stock').value;
-                let precio_unitario = document.querySelector(
-                        '#formulario_actualizar_productos #precio_unitario')
+                let precio_unitario = document.querySelector('#formulario_actualizar_productos #precio_unitario')
                     .value;
                 let descripcion_producto = document.querySelector(
                     '#formulario_actualizar_productos #descripcion_producto').value;
@@ -355,10 +354,10 @@ function actualizarproducto() {
 
 
 
-                document.querySelector('#marca_td_' + id_producto).innerHTML = marca;
-                document.querySelector('#marca_' + id_producto).value = marca;
-                document.querySelector('#categoria_td_' + id_producto).innerHTML = categoria;
-                document.querySelector('#categoria_' + id_producto).value = categoria;
+                //document.querySelector('#marca_td_' + id_producto).innerHTML = marca;
+                document.querySelector('#marca' + id_producto).value = marca;
+                //document.querySelector('#categoria_td_' + id_producto).innerHTML = categoria;
+                document.querySelector('#categoria' + id_producto).value = categoria;
                 document.querySelector('#nombre_producto_td_' + id_producto).innerHTML = nombre_producto;
                 document.querySelector('#nombre_producto_' + id_producto).value = nombre_producto;
                 document.querySelector('#stock_td_' + id_producto).innerHTML = stock;

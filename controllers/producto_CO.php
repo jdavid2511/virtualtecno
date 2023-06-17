@@ -102,26 +102,6 @@ class producto_CO
       exit(json_encode($arreglo_respuesta));
     }
 
-    if (strlen($marca) > 2) {
-      $arreglo_respuesta = [
-        "estado" => "ERROR",
-        "mensaje" => "El tamaño del  codigo de la marca deber ser menor de 2 caracteres"
-
-      ];
-
-      exit(json_encode($arreglo_respuesta));
-    }
-    if (strlen($categoria) > 2) {
-      $arreglo_respuesta = [
-        "estado" => "ERROR",
-        "mensaje" => "El tamaño del  codigo de la categoria deber ser menor de 2 caracteres"
-
-      ];
-
-      exit(json_encode($arreglo_respuesta));
-    }
-
-
     if (strlen($nombre_producto) > 30) {
         $arreglo_respuesta = [
           "estado" => "ERROR",
@@ -144,24 +124,14 @@ class producto_CO
    
     $producto_MO->actualizarproducto($id_producto,$marca,$categoria,$nombre_producto, $stock, $precio_unitario, $descripcion_producto);
 
-    /*$actualizado = $conexion->filasAfectadas();
-
-    if ($actualizado) {
-
-      $mensaje = "Registro Actualizado";
-      $estado = 'EXITO';
-    } else {
-
-      $mensaje = "No se realizaron cambios";
-      $estado = 'ADVERTENCIA';
-    }
-
     $arreglo_respuesta = [
-      "estado" => $estado,
-      "mensaje" => $mensaje
+      "id_producto" => $id_producto,
+      "estado" => "EXITO",
+      "mensaje" => "Registro agregado"
+
     ];
 
-    exit(json_encode($arreglo_respuesta, true));*/
-   
+    exit(json_encode($arreglo_respuesta));
+  
   }
 }

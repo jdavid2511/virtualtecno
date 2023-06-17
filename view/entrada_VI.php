@@ -208,16 +208,15 @@ function verActualizarentrada(id_entrada) {
                         <div class="card">
                             <div class="card-body">
                              <form id="formulario_actualizar_entrada">
-
+                            
                         <div class="form-group">
                             <label for="id_usuario">Nombre usuario</label>
                             <select class="form-control" name="id_usuario" id="id_usuario">
                                 <option value="${id_usuario}">${id_usuario}</option>
                             </select>
-
                         </div>
-
-    
+                            <php
+                          
                                     <div class="form-group">
                                         <label for="fecha_entrada">fecha entrada</label>
                                         <input  type="date" class="form-control" id="fecha_entrada" name="fecha_entrada"

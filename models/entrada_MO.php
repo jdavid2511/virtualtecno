@@ -21,7 +21,6 @@ class entrada_MO
     $mql= array('entry_code'=>$id_entrada);
     $update=array('$set'=>array('user_id'=>$id_usuario,'entry_date'=>$fecha_entrada));
     
-
     $this->conexion->consultarAct($mql,$update,"entries");
   }
 
