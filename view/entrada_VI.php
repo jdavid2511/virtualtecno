@@ -13,12 +13,16 @@ class entrada_VI
         
         require_once "models/entrada_MO.php";
         require_once "models/usuario_MO.php";
+        require_once "models/producto_MO.php";
 
         $conexion = new conexion();
         $entrada_MO = new  entrada_MO($conexion);
         $usuario_MO = new usuario_MO($conexion);
+        $producto_MO = new producto_MO($conexion);
+        
         $arreglo_entrada = $entrada_MO->seleccionar();
         $arreglo_usuario = $usuario_MO->seleccionar();
+        $arreglo_productos = $producto_MO->seleccionar();      
 
 ?>
 
@@ -71,13 +75,57 @@ class entrada_VI
             </div>
             <br>
             <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="cantidad">Codigo detalle entrada</label>
+                        <input type="number" class="form-control" id="id_de" name="id_de">
 
-                <div class="col-md-12">
-                    <br>
-                    <button type="button" onclick="agregarentrada();"
-                        class="btn btn-success float-right">Agregar</button>
+                    </div>
                 </div>
-            </div>
+
+                <div class="col-md-3">
+                    <label for="id_producto">ID producto</label>
+                    <select class="form-control" name="id_protucto" id="id_producto">
+                        <option value=""></option>
+                        <?php
+                                if ($arreglo_productos) {
+
+                                    foreach ($arreglo_productos as $objeto_producto) {
+                                        $id_producto = $objeto_producto->code;
+
+                                ?>
+                        <option value="<?php echo $id_producto; ?>"><?php echo  $id_producto; ?></option>
+                        <?php
+                                    }
+                                }
+                                ?>
+                    </select>
+
+                </div>
+                <br>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="cantidad">Cantidad</label>
+                        <input type="number" class="form-control" id="cantidad" name="cantidad">
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="precio">precio</label>
+                        <input type="number" class="form-control" id="precio" name="precio">
+
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <br>
+                        <button type="button" onclick="agregarentrada();"
+                            class="btn btn-success float-right">Agregar</button>
+                    </div>
+                </div>
 
         </form>
     </div>
@@ -95,6 +143,9 @@ class entrada_VI
                         <th style="text-align: center;">Codigo entrada</th>
                         <th style="text-align: center;">Usuario</th>
                         <th style="text-align: center;">Fecha</th>
+                        <th style="text-align: center;">producto</th>
+                        <th style="text-align: center;">cantidad</th>
+                        <th style="text-align: center;">precio</th>
                         <th style="text-align: center;">Accion</th>
                     </tr>
                 </thead>
@@ -176,6 +227,7 @@ function agregarentrada() {
                              <td id="fecha_entrada_${id_entrada}"> ${fecha_entrada} </td>    
                              
                              <td style="text-align: center;">
+                                            <input type="hidden" id="id_entrada_${id_entrada}" value="${id_entrada}">
                                             <input type="hidden" id="usuario_${id_entrada}" value="${id_usuario}">
                                             <input type="hidden" id="fecha_entrada_${id_entrada}" value="${fecha_entrada}">
 
@@ -202,27 +254,42 @@ function agregarentrada() {
 
 function verActualizarentrada(id_entrada) {
 
+
     let id_usuario = document.querySelector('#id_usuario_' + id_entrada).value;
     let fecha_entrada = document.querySelector('#fecha_entrada_' + id_entrada).value;
+
     var cadena = `
                         <div class="card">
                             <div class="card-body">
                              <form id="formulario_actualizar_entrada">
-                            
                         <div class="form-group">
                             <label for="id_usuario">Nombre usuario</label>
                             <select class="form-control" name="id_usuario" id="id_usuario">
-                                <option value="${id_usuario}">${id_usuario}</option>
+                                <option value="${id_entrada}">${id_usuario}</option>
+                                <?php
+                                $arreglo_usuario = $usuario_MO->seleccionar();
+                                print_r($arreglo_usuario);
+                                if ($arreglo_usuario) {
+
+                                    foreach ($arreglo_usuario as $objeto_usuario) {
+                                        $usuario = $objeto_usuario->document;
+
+                                ?>
+                                
+                                    <option value="<?php echo $usuario?>" > <?php echo  $usuario; ?> </option>
+                                <?php
+                                 }
+                                }
+                                ?>
                             </select>
                         </div>
-                            <php
-                          
+
                                     <div class="form-group">
                                         <label for="fecha_entrada">fecha entrada</label>
                                         <input  type="date" class="form-control" id="fecha_entrada" name="fecha_entrada"
                                             value="${fecha_entrada}">
                                     </div>
-                                    <input    type="hidden" id="id_entrada" name="id_entrada" value="${id_entrada}">
+                                    <input type="hidden" id="id_entrada" name="id_entrada" value="${id_entrada}">
                                     <button type="button" onclick="actualizarentrada();" class="btn btn-success float-right">Actualizar</button>
                                 </form>
                             </div>
