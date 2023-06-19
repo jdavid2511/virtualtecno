@@ -20,7 +20,7 @@ class producto_MO
   {
 
     $Nsql= array('code'=>$id_producto);
-    $update=array('$set'=>array('name_producto'=>$nombre_producto,'stock'=>$stock,'unit_price'=>$precio_unitario,'product_descrption'=>$descripcion_producto, 'brand'=>$marca, 'category'=>$categoria));
+    $update=array('$set'=>array('name_product'=>$nombre_producto,'stock'=>$stock,'unit_price'=>$precio_unitario,'product_description'=>$descripcion_producto, 'brand'=>$marca, 'category'=>$categoria));
     
 
     $this->conexion->consultarAct($Nsql,$update,"products");

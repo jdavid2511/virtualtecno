@@ -8,18 +8,18 @@ class entrada_MO
     $this->conexion = $conexion;
   }
 
-  function agregarentrada($id_entrada,$id_usuario,$fecha_entrada)
+  function agregarentrada($id_entrada,$id_usuario,$fecha_entrada,$producto_id,$cantidad,$precio)
   {
-
-    $mql=array('entry_code'=>$id_entrada,'user_id'=>$id_usuario,'entry_date'=>$fecha_entrada);
+    $mql=array('entry_code'=>$id_entrada,'user_id'=>$id_usuario,'entry_date'=>$fecha_entrada, 'detail_entries' => array('product_id'=>$producto_id,'amount'=>$cantidad,'price'=>$precio));
 
     $this->conexion->consultarIns($mql,"entries");
   }
-  function actualizarentrada($id_entrada,$id_usuario,$fecha_entrada)
+  
+  function actualizarentrada($id_entrada,$id_usuario,$fecha_entrada,$producto_id,$cantidad,$precio)
   {
 
     $mql= array('entry_code'=>$id_entrada);
-    $update=array('$set'=>array('user_id'=>$id_usuario,'entry_date'=>$fecha_entrada));
+    $update=array('$set'=>array('user_id'=>$id_usuario,'entry_date'=>$fecha_entrada, 'detail_entries' => array('product_id'=>$producto_id,'amount'=>$cantidad,'price'=>$precio)));
     
     $this->conexion->consultarAct($mql,$update,"entries");
   }

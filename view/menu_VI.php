@@ -98,34 +98,9 @@ class menu_VI
                                     <ul class="nav child_menu">
                                         <li class="nav-item"><a href="#"
                                                 onclick="verModulo('entrada_VI/agregarEntrada');">Entrada</a></li>
-                                        <li class="nav-item"><a href="#"
-                                                onclick="verModulo('detalle_entrada_VI/agregarDetalle_entrada');">detalle</a>
-                                        </li>
-
                                     </ul>
                                 </li>
-                                <li><a><i class="fa-solid fa-pen"></i> SALIDAS<span
-                                            class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li class="nav-item"><a href="#"
-                                                onclick="verModulo('salida_VI/agregarSalida');">salida</a></li>
-                                        <li class="nav-item"><a href="#"
-                                                onclick="verModulo('detalle_salida_VI/agregarDetalle_salida');">detalle</a>
-                                        </li>
 
-                                    </ul>
-                                </li>
-                                <li><a><i class="fa-solid fa-users"></i> SUMINISTRO<span
-                                            class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li class="nav-item"><a href="#"
-                                                onclick="verModulo('proveedor_VI/agregarProveedor');">proveedor</a></li>
-                                        <li class="nav-item"><a href="#"
-                                                onclick="verModulo('suministro_VI/agregarSuministro');">suministro</a>
-                                        </li>
-
-                                    </ul>
-                                </li>
 
                             </ul>
                         </div>

@@ -50,12 +50,12 @@ class entrada_VI
                                 if ($arreglo_usuario) {
 
                                     foreach ($arreglo_usuario as $objeto_usuario) {
-                                        $id_usuario1 = $objeto_usuario->document;
-                                        $nombre_usuario1= $objeto_usuario->first_name; 
+                                        $id_usuario = $objeto_usuario->document;
+                                        $nombre_usuario= $objeto_usuario->first_name; 
 
                                 ?>
-                        <option value="<?php echo $id_usuario1;?>">
-                            <?php echo $nombre_usuario1; ?>
+                        <option value="<?php echo $id_usuario;?>">
+                            <?php echo $nombre_usuario; ?>
                         </option>
                         <?php
                                     }
@@ -76,25 +76,18 @@ class entrada_VI
             <br>
             <div class="row">
                 <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="cantidad">Codigo detalle entrada</label>
-                        <input type="number" class="form-control" id="id_de" name="id_de">
-
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <label for="id_producto">ID producto</label>
-                    <select class="form-control" name="id_protucto" id="id_producto">
+                    <label for="producto_id">ID producto</label>
+                    <select class="form-control" name="producto_id" id="producto_id">
                         <option value=""></option>
                         <?php
                                 if ($arreglo_productos) {
 
                                     foreach ($arreglo_productos as $objeto_producto) {
-                                        $id_producto = $objeto_producto->code;
+                                        $producto_id = $objeto_producto->code;
+                                        $nombre_producto= $objeto_producto->name_product; 
 
                                 ?>
-                        <option value="<?php echo $id_producto; ?>"><?php echo  $id_producto; ?></option>
+                        <option value="<?php echo $producto_id; ?>"><?php echo  $nombre_producto; ?></option>
                         <?php
                                     }
                                 }
@@ -117,15 +110,15 @@ class entrada_VI
 
                     </div>
                 </div>
-                <br>
-                <div class="row">
-
-                    <div class="col-md-12">
-                        <br>
-                        <button type="button" onclick="agregarentrada();"
-                            class="btn btn-success float-right">Agregar</button>
-                    </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <br>
+                    <button type="button" onclick="agregarentrada();"
+                        class="btn btn-success float-right">Agregar</button>
                 </div>
+            </div>
 
         </form>
     </div>
@@ -155,37 +148,38 @@ class entrada_VI
 
                                 foreach ($arreglo_entrada as $objeto_entrada) {
 
-                                    $id_usuario= $objeto_entrada->user_id;
-                                                    
+                                    $id_usuario= $objeto_entrada->user_id;            
                                     $id_entrada= $objeto_entrada->entry_code;
                                     $fecha_entrada = $objeto_entrada->entry_date;
+                                    $producto_id= $objeto_entrada->detail_entries->product_id;
+                                    $cantidad = $objeto_entrada ->detail_entries-> amount;
+                                    $precio = $objeto_entrada->detail_entries->price;
           
                             ?>
                     <tr>
                         <td id="id_entrada_td_<?php echo $id_entrada;?>"> <?php echo $id_entrada;?> </td>
-                        <?php
-                          
-                                    
-                            ?>
                         <td id="id_usuario_td_<?php echo $id_entrada;?>"> <?php echo $id_usuario;?> </td>
-                        <?php 
-                                    
-                            
-                        ?>
+                        <td id="fecha_entrada_td_<?php echo $id_entrada;?>"> <?php echo $fecha_entrada;?></td>
+                        <td id="producto_id_td_<?php echo $id_entrada ?>"><?php echo $producto_id; ?> </td>
+                        <td id="cantidad_td_<?php echo $id_entrada ?>"><?php echo $cantidad; ?> </td>
+                        <td id="precio_td_<?php echo $id_entrada ?>"><?php echo $precio; ?> </td>
 
-                        <td id="fecha_entrada_td_<?php echo $id_entrada;?>"> <?php echo $fecha_entrada;?>
-                        </td>
                         <td style="text-align: center;">
-                            <input type="hidden" id="id_entrada_<?php echo $id_entrada; ?>"
+                            <input type="hidden" id="id_entrada<?php echo $id_entrada; ?>"
                                 value="<?php echo $id_entrada; ?>">
-                            <input type="hidden" id="id_usuario_<?php echo $id_entrada; ?>"
+                            <input type="hidden" id="id_usuario<?php echo $id_entrada; ?>"
                                 value="<?php echo $id_usuario; ?>">
-                            <input type="hidden" id="fecha_entrada_<?php echo $id_entrada; ?>"
+                            <input type="hidden" id="fecha_entrada<?php echo $id_entrada; ?>"
                                 value="<?php echo $fecha_entrada; ?>">
+                            <input type="hidden" id="producto_id<?php echo $id_entrada?>"
+                                value="<?php echo $producto_id; ?>">
+                            <input type="hidden" id="cantidad<?php echo $id_entrada?>" value="<?php echo $cantidad; ?>">
+                            <input type="hidden" id="precio<?php echo $id_entrada?>" value="<?php echo $precio; ?>">
 
                             <i class="fas fa-edit" data-toggle="modal" data-target="#Ventana_Modal"
                                 style="cursor: pointer;"
                                 onclick="verActualizarentrada('<?php echo $id_entrada; ?>')"></i>
+
                         </td>
                     </tr>
                     <?php
@@ -216,29 +210,39 @@ function agregarentrada() {
             let id_entrada = document.querySelector('#formulario_agregar_entrada #id_entrada').value;
             let fecha_entrada = document.querySelector('#formulario_agregar_entrada #fecha_entrada').value;
             let id_usuario = document.querySelector('#formulario_agregar_entrada #id_usuario').value;
+            let producto_id = document.querySelector('#formulario_agregar_entrada #producto_id').value;
+            let cantidad = document.querySelector('#formulario_agregar_entrada #cantidad').value;
+            let precio = document.querySelector('#formulario_agregar_entrada #precio').value;
 
             if (respuesta.estado == 'EXITO') {
 
                 let fila = `
-                      
-                             <tr>  
-                             <td id="id_entrada_td_${id_entrada}"> ${id_entrada} </td>
-                             <td id="id_usuario_${id_entrada}"> ${id_usuario} </td>
-                             <td id="fecha_entrada_${id_entrada}"> ${fecha_entrada} </td>    
-                             
-                             <td style="text-align: center;">
-                                            <input type="hidden" id="id_entrada_${id_entrada}" value="${id_entrada}">
-                                            <input type="hidden" id="usuario_${id_entrada}" value="${id_usuario}">
-                                            <input type="hidden" id="fecha_entrada_${id_entrada}" value="${fecha_entrada}">
+                            <tr>  
+                                <td id="id_entrada_td_${id_entrada}"> ${id_entrada} </td>
+                                <td id="id_usuario_td_${id_entrada}"> ${id_usuario} </td>
+                                <td id="fecha_entrada_td_${id_entrada}"> ${fecha_entrada} </td>  
+                                <td id="producto_id_td_${id_entrada}"> ${producto_id} </td>
+                                <td id="cantidad_td_${id_entrada}"> ${cantidad} </td>
+                                <td id="precio_td_${id_entrada}"> ${precio} </td>  
+                                    
+                                <td style="text-align: center;">
+                                    <input type="hidden" id="id_entrada_${id_entrada}" value="${id_entrada}">
+                                    <input type="hidden" id="usuario_${id_entrada}" value="${id_usuario}">
+                                    <input type="hidden" id="fecha_entrada_${id_entrada}" value="${fecha_entrada}">
+                                    <input type="hidden" id="producto_id_${id_entrada}" value="${producto_id}">
+                                    <input type="hidden" id="cantidad_${id_entrada}" value="${cantidad}">
+                                    <input type="hidden" id="precio_${id_entrada}" value="${precio}">
 
-                                            <i class="fas fa-edit" data-toggle="modal" data-target="#Ventana_Modal" style="cursor: pointer;" onclick="verActualizarentrada('${id_entrada}')"></i>
-                                        </td>
-                                    </tr>
-                                    `;
+                                    <i class="fas fa-edit" data-toggle="modal" data-target="#Ventana_Modal" style="cursor: pointer;" onclick="verActualizarentrada('${id_entrada}')"></i>
+                                </td>
+                            </tr>
+                            `;
                 document.querySelector('#lista_entrada').insertAdjacentHTML('afterbegin', fila);
 
                 document.querySelector('#formulario_agregar_entrada ').reset();
+
                 toastr.success(respuesta.mensaje);
+
             } else if (respuesta.estado = 'ERROR') {
 
                 toastr.error(respuesta.mensaje);
@@ -254,9 +258,11 @@ function agregarentrada() {
 
 function verActualizarentrada(id_entrada) {
 
-
-    let id_usuario = document.querySelector('#id_usuario_' + id_entrada).value;
-    let fecha_entrada = document.querySelector('#fecha_entrada_' + id_entrada).value;
+    let id_usuario = document.querySelector('#id_usuario' + id_entrada).value;
+    let fecha_entrada = document.querySelector('#fecha_entrada' + id_entrada).value;
+    let producto_id = document.querySelector('#producto_id' + id_entrada).value;
+    let cantidad = document.querySelector('#cantidad' + id_entrada).value;
+    let precio = document.querySelector('#precio' + id_entrada).value;
 
     var cadena = `
                         <div class="card">
@@ -275,7 +281,6 @@ function verActualizarentrada(id_entrada) {
                                         $usuario = $objeto_usuario->document;
 
                                 ?>
-                                
                                     <option value="<?php echo $usuario?>" > <?php echo  $usuario; ?> </option>
                                 <?php
                                  }
@@ -288,6 +293,38 @@ function verActualizarentrada(id_entrada) {
                                         <label for="fecha_entrada">fecha entrada</label>
                                         <input  type="date" class="form-control" id="fecha_entrada" name="fecha_entrada"
                                             value="${fecha_entrada}">
+                                    </div>
+                                    <div class="form-group">
+                            <label for="producto_id">Nombre producto</label>
+                            <select class="form-control" name="producto_id" id="producto_id">
+                                <option value="${producto_id}">${producto_id}</option>
+                                <?php
+                                $arreglo_productos = $producto_MO->seleccionar();
+                                print_r($arreglo_productos);
+                                if ($arreglo_productos) {
+
+                                    foreach ($arreglo_productos as $objeto_producto) {
+                                        $producto_id = $objeto_producto->code;
+
+                                ?>
+                                    <option value="<?php echo $producto_id?>" > <?php echo  $producto_id; ?> </option>
+                                <?php
+                                 }
+                                }
+                                ?>
+                            </select>
+
+                        </div>
+                    
+                                    <div class="form-group">
+                                        <label for="cantidad">cantidad producto</label>
+                                        <input   type="number" class="form-control" id="cantidad" name="cantidad"
+                                            value="${cantidad}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="precio">precio </label>
+                                        <input type="number" class="form-control" id="precio" name="precio"
+                                            value="${precio}">
                                     </div>
                                     <input type="hidden" id="id_entrada" name="id_entrada" value="${id_entrada}">
                                     <button type="button" onclick="actualizarentrada();" class="btn btn-success float-right">Actualizar</button>
@@ -306,9 +343,6 @@ function verActualizarentrada(id_entrada) {
 function actualizarentrada() {
 
     var cadena = new FormData(document.querySelector('#formulario_actualizar_entrada'));
-    var dato_usuario = document.getElementById("id_usuario");
-
-
 
     fetch('entrada_CO/actualizarentrada', {
             method: 'POST',
@@ -318,19 +352,26 @@ function actualizarentrada() {
         .then(respuesta => {
 
             if (respuesta.estado == 'EXITO') {
-                let id_entrada = id_usuario.querySelector(
+                let id_entrada = document.querySelector(
                     '#formulario_actualizar_entrada #id_entrada').value;
-                let fecha_entrada = id_usuario.querySelector('#formulario_actualizar_entrada #fecha_entrada').value;
-                let id_usuario = id_usuario.querySelector('#formulario_actualizar_entrada #id_usuario').value;
+                let fecha_entrada = document.querySelector('#formulario_actualizar_entrada #fecha_entrada').value;
+                let id_usuario = document.querySelector('#formulario_actualizar_entrada #id_usuario').value;
+                let producto_id = document.querySelector('#formulario_actualizar_entrada #producto_id').value;
+                let cantidad = document.querySelector('#formulario_actualizar_entrada #cantidad').value;
+                let precio = document.querySelector('#formulario_actualizar_entrada #precio').value;
+
+                document.querySelector('#id_usuario_td_' + id_entrada).innerHTML = id_usuario;
+                document.querySelector('#id_usuario' + id_entrada).value = id_usuario;
+                document.querySelector('#fecha_entrada_td_' + id_entrada).innerHTML = fecha_entrada;
+                document.querySelector('#fecha_entrada' + id_entrada).value = fecha_entrada;
+                document.querySelector('#producto_id_td_' + id_entrada).innerHTML = producto_id;
+                document.querySelector('#producto_id' + id_entrada).value = producto_id;
+                document.querySelector('#cantidad_td_' + id_entrada).innerHTML = cantidad;
+                document.querySelector('#cantidad' + id_entrada).value = cantidad;
+                document.querySelector('#precio_td_' + id_entrada).innerHTML = precio;
+                document.querySelector('#precio' + id_entrada).value = precio;
 
 
-
-
-                id_usuario.querySelector('#usuario_td_' + id_entrada).innerHTML = usuario;
-                id_usuario.querySelector('#usuario_' + id_entrada).value = usuario;
-                id_usuario.querySelector('#fecha_entrada_td_' + id_entrada).innerHTML = fecha_entrada;
-                id_usuario.querySelector('#fecha_entrada_' + id_entrada).value = fecha_entrada;
-                id_usuario.querySelector('#id_usuario' + id_entrada).value = id_usuario;
 
                 $.post('entrada_VI/agregarEntrada', function(respuesta) {
                     $('#contenido').html(respuesta);

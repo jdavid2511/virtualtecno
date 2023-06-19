@@ -59,51 +59,52 @@ class producto_VI
                         <option value="ALACENAMIENTO">ALMACENAMIENTO</option>
                     </select>
                 </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="id_producto">codigo producto</label>
+                        <input type="text" class="form-control" id="id_producto" name="id_producto">
 
-                <br>
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="id_producto">codigo producto</label>
-                            <input type="text" class="form-control" id="id_producto" name="id_producto">
-
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="nombre_producto">Nombre producto</label>
-                            <input type="text" class="form-control" id="nombre_producto" name="nombre_producto">
-
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="stock">Stock</label>
-                            <input type="number" class="form-control" id="stock" name="stock">
-
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="precio_unitario">precio unitario</label>
-                            <input type="number" class="form-control" id="precio_unitario" name="precio_unitario">
-
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="descripcion_producto">descripcion</label>
-                            <input type="text" class="form-control" id="descripcion_producto"
-                                name="descripcion_producto">
-
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <br>
-                        <button type="button" onclick="agregarproducto()"
-                            class="btn btn-success float-right">Agregar</button>
                     </div>
                 </div>
+            </div>
+
+            <br>
+            <div class="row">
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="nombre_producto">Nombre producto</label>
+                        <input type="text" class="form-control" id="nombre_producto" name="nombre_producto">
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="stock">Stock</label>
+                        <input type="number" class="form-control" id="stock" name="stock">
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="precio_unitario">precio unitario</label>
+                        <input type="number" class="form-control" id="precio_unitario" name="precio_unitario">
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="descripcion_producto">descripcion</label>
+                        <input type="text" class="form-control" id="descripcion_producto" name="descripcion_producto">
+
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <br>
+                    <button type="button" onclick="agregarproducto()"
+                        class="btn btn-success float-right">Agregar</button>
+                </div>
+            </div>
 
         </form>
     </div>
@@ -143,32 +144,32 @@ class producto_VI
                                     $marca = $objeto_productos['brand'];
                             ?>
                     <tr>
-                        <td id="id_producto_td_<?php echo $id_producto; ?>"> <?php echo $id_producto; ?> </td>
-                        <td id="nombre_marca_td_<?php echo $id_producto; ?>"> <?php echo $marca; ?> </td>
-                        <td id="nombre_categoria_td_<?php echo $id_producto; ?>"> <?php echo $categoria; ?> </td>
-                        <td id="nombre_producto_td_<?php echo $id_producto; ?>"> <?php echo $nombre_producto; ?> </td>
-                        <td id="stock_td_<?php echo $id_producto; ?>"> <?php echo $stock; ?> </td>
-                        <td id="precio_unitario_td_<?php echo $id_producto; ?>"> <?php echo $precio_unitario; ?> </td>
-                        <td id="descripcion_producto_td_<?php echo $id_producto; ?>">
-                            <?php echo $descripcion_producto; ?> </td>
+                        <td id="id_producto_td_<?php echo $id_producto;?>"> <?php echo $id_producto;?> </td>
+                        <td id="marca_td_<?php echo $id_producto;?>"> <?php echo $marca; ?> </td>
+                        <td id="categoria_td_<?php echo $id_producto;?>"> <?php echo $categoria;?> </td>
+                        <td id="nombre_producto_td_<?php echo $id_producto;?>"> <?php echo $nombre_producto;?> </td>
+                        <td id="stock_td_<?php echo $id_producto;?>"> <?php echo $stock;?> </td>
+                        <td id="precio_unitario_td_<?php echo $id_producto;?>"> <?php echo $precio_unitario;?> </td>
+                        <td id="descripcion_producto_td_<?php echo $id_producto;?>">
+                            <?php echo $descripcion_producto;?> </td>
                         <td style="text-align: center;">
-                            <input type="hidden" id="id_producto_<?php echo $id_producto; ?>"
-                                value="<?php echo $id_producto; ?>">
-                            <input type="hidden" id="marca<?php echo $id_producto; ?>" value="<?php echo $marca; ?>">
-                            <input type="hidden" id="categoria<?php echo $id_producto; ?>"
-                                value="<?php echo $categoria; ?>">
-                            <input type="hidden" id="nombre_producto_<?php echo $id_producto; ?>"
-                                value="<?php echo $nombre_producto; ?>">
-                            <input type="hidden" id="stock_<?php echo $id_producto; ?>" value="<?php echo $stock; ?>">
-                            <input type="hidden" id="precio_unitario_<?php echo $id_producto; ?>"
-                                value="<?php echo $precio_unitario; ?>">
-                            <input type="hidden" id="descripcion_producto_<?php echo $id_producto; ?>"
-                                value="<?php echo $descripcion_producto; ?>">
+                            <input type="hidden" id="id_producto<?php echo $id_producto;?>"
+                                value="<?php echo $id_producto;?>">
+                            <input type="hidden" id="marca<?php echo $id_producto;?>" value="<?php echo $marca;?>">
+                            <input type="hidden" id="categoria<?php echo $id_producto;?>"
+                                value="<?php echo $categoria;?>">
+                            <input type="hidden" id="nombre_producto<?php echo $id_producto;?>"
+                                value="<?php echo $nombre_producto;?>">
+                            <input type="hidden" id="stock<?php echo $id_producto; ?>" value="<?php echo $stock;?>">
+                            <input type="hidden" id="precio_unitario<?php echo $id_producto;?>"
+                                value="<?php echo $precio_unitario;?>">
+                            <input type="hidden" id="descripcion_producto<?php echo $id_producto;?>"
+                                value="<?php echo $descripcion_producto;?>">
 
 
                             <i class="fas fa-edit" data-toggle="modal" data-target="#Ventana_Modal"
                                 style="cursor: pointer;"
-                                onclick="verActualizarproducto('<?php echo $id_producto; ?>')"></i>
+                                onclick="verActualizarproducto('<?php echo $id_producto;?>')"></i>
                         </td>
                     </tr>
                     <?php
@@ -247,75 +248,74 @@ function agregarproducto() {
 }
 
 function verActualizarproducto(id_producto) {
-    //let especie1 = document.querySelector('#especie_' + id_$id_producto).value;
+
     let marca = document.querySelector('#marca' + id_producto).value;
     let categoria = document.querySelector('#categoria' + id_producto).value;
-    let nombre_producto = document.querySelector('#nombre_producto_' + id_producto).value;
-    let stock = document.querySelector('#stock_' + id_producto).value;
-    let precio_unitario = document.querySelector('#precio_unitario_' + id_producto).value;
-    let descripcion_producto = document.querySelector('#descripcion_producto_' + id_producto).value;
+    let nombre_producto = document.querySelector('#nombre_producto' + id_producto).value;
+    let stock = document.querySelector('#stock' + id_producto).value;
+    let precio_unitario = document.querySelector('#precio_unitario' + id_producto).value;
+    let descripcion_producto = document.querySelector('#descripcion_producto' + id_producto).value;
 
     //console.log(codi_origen);
     var cadena = `
                         <div class="card">
                             <div class="card-body">
                              <form id="formulario_actualizar_productos">
- 
-                        <div class="form-group">
-                            <label for="marca">Nombre marca</label>
-                            <select class="form-control" name="marca" id="marca">
-                                <option value="${marca}">${marca}</option>
-                                <option value="SAMSUNG">SAMSUNG</option>
-                                <option value="OPPO">OPPO</option>
-                                <option value="REALME">REALME</option>
-                                <option value="XIAOMI">XIAOMI</option>
-                                <option value="NOKIA">NOKIA</option>
-                                <option value="MOTOROLA">MOTOROLA</option>
-                                <option value="TECNO">TECNO</option>
-                                <option value="APPLE">APPLE</option>
-                                <option value="HONOR">HONOR</option>
-                                <option value="ONEPLUS">ONEPLUS</option>
-                            </select>
+                                <div class="form-group">
+                                    <label for="marca">Nombre marca</label>
+                                    <select class="form-control" name="marca" id="marca">
+                                        <option value="${marca}">${marca}</option>
+                                        <option value="SAMSUNG">SAMSUNG</option>
+                                        <option value="OPPO">OPPO</option>
+                                        <option value="REALME">REALME</option>
+                                        <option value="XIAOMI">XIAOMI</option>
+                                        <option value="NOKIA">NOKIA</option>
+                                        <option value="MOTOROLA">MOTOROLA</option>
+                                        <option value="TECNO">TECNO</option>
+                                        <option value="APPLE">APPLE</option>
+                                        <option value="HONOR">HONOR</option>
+                                        <option value="ONEPLUS">ONEPLUS</option>
+                                    </select>
 
-                        </div>
-                        <div class="form-group">
-                            <label for="categoria">categoria</label>
-                            <select class="form-control" name="categoria" id="categoria">
-                                <option value="${categoria}">${categoria}</option>
-                                <option value="MAS VENDIDOS">MAS VENDIDOS</option>
-                                <option value="ASARTPHONE">SMARTPHONE</option>
-                                <option value="CLASICOS">CLASICOS</option>
-                                <option value="GAMA BAJA">GAMA BAJA</option>
-                                <option value="BAJO COSTO">BAJO COSTO</option>
-                                <option value="GAMA ALTA">GAMA ALTA</option>
-                                <option value="MEJOR CAMARA">MEJOR CAMARA</option>
-                                <option value="ALACENAMIENTO">ALMACENAMIENTO</option>
-                            </select>
-                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="categoria">categoria</label>
+                                    <select class="form-control" name="categoria" id="categoria">
+                                        <option value="${categoria}">${categoria}</option>
+                                        <option value="MAS VENDIDOS">MAS VENDIDOS</option>
+                                        <option value="ASARTPHONE">SMARTPHONE</option>
+                                        <option value="CLASICOS">CLASICOS</option>
+                                        <option value="GAMA BAJA">GAMA BAJA</option>
+                                        <option value="BAJO COSTO">BAJO COSTO</option>
+                                        <option value="GAMA ALTA">GAMA ALTA</option>
+                                        <option value="MEJOR CAMARA">MEJOR CAMARA</option>
+                                        <option value="ALACENAMIENTO">ALMACENAMIENTO</option>
+                                    </select>
+                                </div>
 
-                                    <div class="form-group">
-                                        <label for="nombre_producto">nombre producto</label>
-                                        <input   type="text" class="form-control" id="nombre_producto" name="nombre_producto"
-                                            value="${nombre_producto}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="stock">Stock</label>
-                                        <input type="number" class="form-control" id="stock" name="stock"
-                                            value="${stock}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="precio_unitario">precio unitario</label>
-                                        <input type="number" class="form-control" id="precio_unitario" name="precio_unitario"
-                                            value="${precio_unitario}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="descripcion_producto">descripcion producto</label>
-                                        <input  type="text" class="form-control" id="descripcion_producto" name="descripcion_producto"
-                                            value="${descripcion_producto}">
-                                    </div>
-                                    <input    type="hidden" id="id_producto" name="id_producto" value="${id_producto}">
-                                    <button type="button" onclick="actualizarproducto();" class="btn btn-success float-right">Actualizar</button>
-                                </form>
+                                <div class="form-group">
+                                                <label for="nombre_producto">Stock</label>
+                                                <input type="text" class="form-control" id="nombre_producto" name="nombre_producto"
+                                                    value="${nombre_producto}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="stock">Stock</label>
+                                                <input type="number" class="form-control" id="stock" name="stock"
+                                                    value="${stock}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="precio_unitario">precio unitario</label>
+                                                <input type="number" class="form-control" id="precio_unitario" name="precio_unitario"
+                                                    value="${precio_unitario}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="descripcion_producto">descripcion producto</label>
+                                                <input  type="text" class="form-control" id="descripcion_producto" name="descripcion_producto"
+                                                    value="${descripcion_producto}">
+                                            </div>
+                                            <input    type="hidden" id="id_producto" name="id_producto" value="${id_producto}">
+                                            <button type="button" onclick="actualizarproducto();" class="btn btn-success float-right">Actualizar</button>
+                                    </form>
                             </div>
                         </div>
                     `;
@@ -359,14 +359,14 @@ function actualizarproducto() {
                 //document.querySelector('#categoria_td_' + id_producto).innerHTML = categoria;
                 document.querySelector('#categoria' + id_producto).value = categoria;
                 document.querySelector('#nombre_producto_td_' + id_producto).innerHTML = nombre_producto;
-                document.querySelector('#nombre_producto_' + id_producto).value = nombre_producto;
+                document.querySelector('#nombre_producto' + id_producto).value = nombre_producto;
                 document.querySelector('#stock_td_' + id_producto).innerHTML = stock;
-                document.querySelector('#stock_' + id_producto).value = stock;
+                document.querySelector('#stock' + id_producto).value = stock;
                 document.querySelector('#precio_unitario_td_' + id_producto).innerHTML = precio_unitario;
-                document.querySelector('#precio_unitario_' + id_producto).value = precio_unitario;
+                document.querySelector('#precio_unitario' + id_producto).value = precio_unitario;
                 document.querySelector('#descripcion_producto_td_' + id_producto).innerHTML =
                     descripcion_producto;
-                document.querySelector('#descripcion_producto_' + id_producto).value = descripcion_producto;
+                document.querySelector('#descripcion_producto' + id_producto).value = descripcion_producto;
 
 
                 $.post('producto_VI/agregarProducto', function(respuesta) {
