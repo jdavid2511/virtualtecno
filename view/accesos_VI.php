@@ -157,7 +157,7 @@ function registrar() {
 
     var cadena = new FormData(document.querySelector('#formulario_registrarse'));
 
-    fetch('./controllers/usuario_CO.php', {
+    fetch('./controllers/usuarios_CO.php', {
             method: 'POST',
             body: cadena
         })

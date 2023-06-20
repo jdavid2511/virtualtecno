@@ -137,7 +137,9 @@ class menu_VI
                                 <div class="dropdown-menu dropdown-usermenu pull-right"
                                     aria-labelledby="navbarDropdown">
 
-
+                                    <a class="dropdown-item"
+                                        onclick="verModulo('usuario_VI/actualizarUsuario');">Visualizar/Editar
+                                        Datos</a>
                                     <a class="dropdown-item" href="#" onclick="salir()"><i
                                             class="fa fa-sign-out pull-right"></i> Cerrar sesión</a>
                                 </div>
