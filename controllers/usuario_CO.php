@@ -19,7 +19,7 @@ class usuario_CO
     $telefono=htmlentities($_POST['telefono'], ENT_QUOTES);
     $correo=htmlentities($_POST['correo'], ENT_QUOTES);
     $contrasena=htmlentities($_POST['contrasena'], ENT_QUOTES);
-    $documento=htmlentities($_POST['documento'], ENT_QUOTES);
+    $id_usuario=htmlentities($_POST['id_usuario'], ENT_QUOTES);
     $usuario=htmlentities($_POST['usuario'], ENT_QUOTES);
     
     if (empty($nombre)or empty($apellido) or empty($usuario) or empty($telefono) or empty($correo)or empty($contrasena) ) {
@@ -85,7 +85,7 @@ class usuario_CO
       }
       
 
-    $usuario_MO -> actualizarusuario($documento,$usuario,$nombre,$apellido,$telefono,$correo,$contrasena);
+    $usuario_MO -> actualizarusuario($id_usuario,$usuario,$nombre,$apellido,$telefono,$correo,$contrasena);
 
     $arreglo_respuesta = [
       "estado" => "EXITO",

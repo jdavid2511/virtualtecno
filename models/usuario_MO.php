@@ -36,11 +36,11 @@ class usuario_MO
   function actualizarusuario($id_usuario,$usuario,$nombre,$apellido,$telefono,$correo,$contrasena)
   {
 
-    $Nsql= array('document'=>$id_usuario);
-    $update=array('$set'=>array('fisrt name'=>$usuario,'user'=>$usuario,'first_name'=>$nombre, 'last_name'=>$apellido, 'cellphone'=>$telefono, 'email'=>$correo, 'password'=>$contrasena));
+    $mql= array('document'=>$id_usuario);
+    $update=array('$set'=>array('user'=>$usuario,'first_name'=>$nombre,'last_name'=>$apellido,'cellphone'=>$telefono,'email'=>$correo,'password'=>$contrasena));
     
 
-    $this->conexion->consultarAct($Nsql,$update,"users");
+    $this->conexion->consultarAct($mql,$update,"users");
   }
  
 }

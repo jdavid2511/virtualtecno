@@ -21,7 +21,7 @@ class usuario_VI
           $usuario=$document['user'];
           $correo=$document['email'];
           $contrasena=$document['password'];
-          $documento=$document['document'];
+          $id_usuario=$document['document'];
 
         }
 
@@ -61,7 +61,7 @@ class usuario_VI
                     value="<?php echo $contrasena ?>">
             </div>
 
-            <input type="hidden" id="documento" name="documento" value="<?php echo $documento ?>">
+            <input type="hidden" id="id_usuario" name="id_usuario" value="<?php echo $id_usuario ?>">
             <button type="button" onclick="actualizarUsuario();" class="btn btn-success float-right">Actualizar</button>
             <br>
 
